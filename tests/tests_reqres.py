@@ -1,4 +1,4 @@
-import pytest
+import pytest, requests
 from selene import browser, be, have, command
 
 #@pytest.fixture
@@ -11,8 +11,9 @@ from selene import browser, be, have, command
     
 def test_pozitive():
     browser.open('https://reqres.in/')
-    browser.element('class="active"').perform(command.js.scroll_into_view)
-    #browser.element(".li[@class='active']").should(have.text('response-code, 200'))
+    browser.element('[data-http="get"]').perform(command.js.scroll_into_view).click()
+    browser.element('[class="response"]').should(have.text('200'))
+    assert browser.element('status_code == 200')
 
 
 
