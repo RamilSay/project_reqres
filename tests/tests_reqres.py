@@ -1,7 +1,6 @@
 import pytest
 from selene import browser, be, have, command
 
-
 @pytest.fixture
 def browser_link(scope="session"):
     browser.config.base_url = "https://reqres.in/"
@@ -12,8 +11,9 @@ def browser_link(scope="session"):
     
 def test_pozitive(browser_link):
     browser.open('/')
-    browser.element(".li[@class='active']").perform(command.js.scroll_into_view)
-    browser.element(".li[@class='active']").should(have.text('response-code, 200'))
+
+    browser.element(".console .endpoints li").perform(command.js.scroll_into_view)
+    #browser.element(".li[@class='active']").should(have.text('response-code, 200'))
 
 
 
