@@ -2,7 +2,7 @@ from selene import browser, have, command
 
 url = 'https://reqres.in/'
 
-
+#UI tests
 def test_good(browser_setup):
     code = "200"
     response = " Статус кода соответствует запросу"
